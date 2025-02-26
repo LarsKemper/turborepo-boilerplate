@@ -1,0 +1,44 @@
+name: check
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          run_install: false
+
+      - name: Set node version
+        run: echo "node_version=$(cat ../../.nvmrc)" >> $GITHUB_ENV
+
+      - name: 'use node ${{ env.node_version }}'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '${{ env.node_version }}'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Lint check
+        run: pnpm run lint
+
+      - name: Check types
+        run: pnpm run check-types
+
+      - name: Check format
+        run: pnpm run format:check

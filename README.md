@@ -1,31 +1,64 @@
-# shadcn/ui monorepo template
+# turborepo-boilerplate
 
-This template is for creating a monorepo with shadcn/ui.
+## Overview
 
-## Usage
+- [Local development](https://github.com/LarsKemper/turborepo-boilerplate#local-development)
+- [About this repository](https://github.com/LarsKemper/turborepo-boilerplate#about-this-repository)
+- [Documentation](https://github.com/LarsKemper/turborepo-boilerplate#documentation)
+- [Examples](https://github.com/LarsKemper/turborepo-boilerplate#examples)
+- [License](https://github.com/LarsKemper/turborepo-boilerplate#license)
+
+## Local development
+
+To run the local development server, first clone this repo.
+
+Switch to the project directory:
 
 ```bash
-pnpm dlx shadcn@latest init
+cd turborepo-boilerplate
 ```
 
-## Adding components
-
-To add components to your app, run the following command at the root of your `web` app:
+Install dependencies:
 
 ```bash
-pnpm dlx shadcn@latest add button -c apps/web
+pnpm install
 ```
 
-This will place the ui components in the `packages/ui/src/components` directory.
+Start the local development servers:
 
-## Tailwind
-
-Your `tailwind.config.ts` and `globals.css` are already set up to use the components from the `ui` package.
-
-## Using components
-
-To use the components in your app, import them from the `ui` package.
-
-```tsx
-import { Button } from "@workspace/ui/components/button"
+```bash
+pnpm run dev
 ```
+
+Open the project at `localhost:3000`.
+
+## About this repository
+
+### Top-level layout
+
+This repository's contents is divided across four primary sections:
+
+- `/examples` contains example projects
+- `/apps` contains the source code of turborepo-boilerplate apps
+- `/packages` contains the source code of turborepo-boilerplate packages
+
+### Apps
+
+This repository's source code is divided across multiple apps:
+
+- `@trb/web` contains the source code of the turborepo-boilerplate web app
+
+### Packages
+
+This repository's source code is divided across multiple packages:
+
+- `@trb/eslint-config` contains configuration for ESLint
+- `@trb/typescirpt-config` contains configuration for TypeScript
+- `@trb/ui` contains the source code of the turborepo-boilerplate UI components
+- `@trb/shared` contains shared code used across multiple apps
+
+## License
+
+Copyright (c) 2025 [?]
+`turborepo-boilerplate` is distributed under the terms of the MIT License.  
+See the [LICENSE](./LICENSE) file for details.

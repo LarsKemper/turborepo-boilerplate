@@ -1,16 +1,37 @@
 {
-  "name": "shadcn-ui-monorepo",
+  "name": "turborepo-boilerplate",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://github.com/LarsKemper/turborepo-boilerplate#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LarsKemper/turborepo-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LarsKemper/turborepo-boilerplate/issues"
+  },
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json,yml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json,yml}\"",
+    "check-types": "turbo run check-types",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major",
+    "prepare": "husky && chmod ug+x .husky/*",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@workspace/eslint-config": "workspace:*",
-    "@workspace/typescript-config": "workspace:*",
+    "@trb/eslint-config": "workspace:*",
+    "@trb/typescript-config": "workspace:*",
+    "@commitlint/config-conventional": "19.6.0",
+    "commitlint": "19.6.1",
+    "husky": "9.1.7",
+    "lint-staged": "15.4.1",
+    "standard-version": "^9.5.0",
     "prettier": "^3.2.5",
     "turbo": "^2.3.0",
     "typescript": "5.5.4"

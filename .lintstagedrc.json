@@ -1,0 +1,4 @@
+{
+  "packages/**/*.{json,md,js,jsx,ts,tsx}": ["pnpm run format"],
+  "apps/**/*.{json,md,js,jsx,ts,tsx}": ["pnpm run format"]
+}
